@@ -1,11 +1,11 @@
-const topicsData = {
-    "topics": [
+const gemTopicsData = {
+    "gemTopics": [
         {
-          "topic": {
+          "gemTopic": {
             "id" : 0,
             "src" : "A",
-            "header": "We must collect all the gems..",
-                "desc": "We must collect all the gems..",
+            "header": "Sitting on the sidelines",
+            "desc": "A little kid is sitting on the sidelines on a bench while not far away a group of children is playing with a ball",
             "img" : "",
             "question" : "How does the little girl/boy feel?",
             "choices" : [
@@ -55,11 +55,14 @@ const topicsData = {
           }
         },
         {
-          "topic": {
+          "gemTopic": {
             "id" : 1,
             "src" : "B",
-            "header": "I am scared.",
-            "desc": "I am scared.",
+            "header": "Classmate remains out of the teams",
+            "desc": "The student's group of friends decide to split into two teams to play soccer." +
+            "Numbers are odd and a classmate remains out of the teams." +
+            "The classmate that was left out (with a disappointed face expression) says \"it doesn't matter guys,"+
+            "instead of playing football with you I'll go to read a book\"",
             "img" : "",
             "question" : "What does the child feel?",
             "choices" : [
@@ -95,11 +98,13 @@ const topicsData = {
           }
         },
         {
-          "topic": {
+          "gemTopic": {
             "id" : 2,
             "src" : "C",
-            "header": "Let's save the school!",
-            "desc": "Let's save the school!",
+            "header": "A group of children is fighting with a classmate",
+            "desc": "A group of children is fighting with a classmate."+
+            "They tell you they are angry with them because they accidentally threw the ball too hard and now it is missing."+
+            "The child who lost the ball has a sorry expression.",
             "img" : "",
             "question" : "What would you do if you witnessed this scene?",
             "choices" : [
@@ -135,11 +140,11 @@ const topicsData = {
           }
         },
         {
-          "topic": {
+          "gemTopic": {
             "id" : 3,
             "src" : "D",
-                "header": "Evil Witch.",
-                "desc": "Evil Witch.",
+            "header": "Jokes about the origins of a foreign child",
+            "desc": "\"You hear your classmates make a joke about the origins of a foreign child you don't know.\"",
             "img" : "",
             "question" : "What do you do?",
             "choices" : [
@@ -175,11 +180,11 @@ const topicsData = {
           }
         },
         {
-          "topic": {
+          "gemTopic": {
             "id" : 4,
             "src" : "E",
-                "header": "I wonder if we can find all the gems..",
-                "desc": "I wonder if we can find all the gems..",
+            "header": "Girl in traditional indian dress",
+            "desc": "A girl in traditional indian dress walks down the street. All the people on street turn to look at her.",
             "img" : "",
             "question" : "Describe the scene accurately",
             "choices" : [
@@ -206,11 +211,10 @@ const topicsData = {
               },
             ]
           }
-        },
-        
+        },        
 
 
     ]
 };
 
-export { topicsData };
+export { gemTopicsData };

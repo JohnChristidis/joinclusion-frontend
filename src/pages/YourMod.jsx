@@ -38,6 +38,23 @@ export function YourMod({id}) {
            },
          },
        ],
+       gemInteractibleAreas: [
+           {
+               gemInteractibleArea: {
+                   id: 0,
+                   position: "left-60 bottom-20 top-48",
+                   gem: "none",
+               },
+           },
+           {
+               gemInteractibleArea: {
+                   id: 1,
+                   position: "bottom-20 right-60 top-48",
+                   gem: "none",
+               },
+           },
+
+       ],
      },
    },
    {
@@ -60,6 +77,22 @@ export function YourMod({id}) {
              character: "none",
            },
          },
+       ],
+       gemInteractibleAreas: [
+           {
+               gemInteractibleArea: {
+                   id: 0,
+                   position: "left-60 bottom-20 top-48",
+                   gem: "none",
+               },
+           },
+           {
+               gemInteractibleArea: {
+                   id: 1,
+                   position: "bottom-20 right-60 top-48",
+                   gem: "none",
+               },
+           },
        ],
      },
    },
@@ -84,6 +117,22 @@ export function YourMod({id}) {
            },
          },
        ],
+       gemInteractibleAreas: [
+           {
+               gemInteractibleArea: {
+                   id: 0,
+                   position: "left-60 bottom-20 top-48",
+                   gem: "none",
+               },
+           },
+           {
+               gemInteractibleArea: {
+                   id: 1,
+                   position: "bottom-20 right-60 top-48",
+                   gem: "none",
+               },
+           },
+       ],
      },
    },
    {
@@ -106,6 +155,23 @@ export function YourMod({id}) {
              character: "none",
            },
          },
+       ],
+       gemInteractibleAreas: [
+           {
+               gemInteractibleArea: {
+                   id: 0,
+                   position: "left-60 bottom-20 top-48",
+                   gem: "none",
+               },
+           },
+           {
+               gemInteractibleArea: {
+                   id: 1,
+                   position: "bottom-20 right-60 top-48",
+                   gem: "none",
+               },
+           },
+
        ],
      },
    },
@@ -168,6 +234,7 @@ const [excistingMod, setExcistingMod] = useState([])
         const cleanedDataArray = Object.values(cleanedData);
         cleanedDataArray.forEach(entry => {
           entry.location.interactibleAreas = Object.values(entry.location.interactibleAreas);
+          entry.location.gemInteractibleAreas = Object.values(entry.location.gemInteractibleAreas);
         })
 
         console.log("cleaned data : ",cleanedDataArray);
@@ -190,6 +257,7 @@ const [excistingMod, setExcistingMod] = useState([])
       name: entry.location.name,
       img: entry.location.img,
       interactibleAreas: entry.location.interactibleAreas,
+      gemInteractibleAreas: entry.location.gemInteractibleAreas,
     };
 
     return {
@@ -255,7 +323,13 @@ const [excistingMod, setExcistingMod] = useState([])
          !ia.interactibleArea.character.topic
      )
    );
-
+   const hasGemWithoutTopic = mod.some((entry) =>
+     entry.location.gemInteractibleAreas.some(
+       (ia) =>
+         ia.gemInteractibleArea.gem !== 'none' &&
+         !ia.gemInteractibleArea.gem.gemTopic
+     )
+   );
    return (
      !info.name ||
      !info.code ||
@@ -269,7 +343,13 @@ const [excistingMod, setExcistingMod] = useState([])
          (ia) => ia.interactibleArea.character === 'none'
        )
      ) ||
-     hasCharacterWithoutTopic
+     hasCharacterWithoutTopic ||
+     mod.every((entry) =>
+      entry.location.gemInteractibleAreas.every(
+        (ia) => ia.gemInteractibleArea.gem === 'none'
+      )
+    ) ||
+    hasGemWithoutTopic
    );
  };
 
@@ -360,6 +440,7 @@ const [excistingMod, setExcistingMod] = useState([])
              maxLength="4"
              value={info.code}
              onChange={(e) => setInfo({ ...info, code: e.target.value })}
+             readOnly  
            />
            <button
              className="bg-blue-500 text-white px-3 py-2 ml-2 rounded"
@@ -382,14 +463,25 @@ const [excistingMod, setExcistingMod] = useState([])
      </div>
       {mod.map((entry, index) => (
     <div key={index} className="relative rounded-lg overflow-hidden mb-6">
-      <Location
+      {/*<Location
         areaId={entry.location.id}
         name={entry.location.name}
         img={entry.location.img}
         interactibleAreas={entry.location.interactibleAreas}
         handleMod={handleMod}
         mod = {mod}
-      />
+      /> */}
+
+        <Location
+          areaId={entry.location.id}
+          name={entry.location.name}
+          img={entry.location.img}
+          interactibleAreas={entry.location.interactibleAreas}
+          gemInteractibleAreas={entry.location.gemInteractibleAreas}
+          handleMod={handleMod}
+          mod = {mod}
+        />
+
     </div>
   ))}
     </div>

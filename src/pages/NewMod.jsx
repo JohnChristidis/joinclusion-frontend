@@ -37,6 +37,23 @@ export function NewMod({id}) {
            },
          },
        ],
+       gemInteractibleAreas: [
+         {
+           gemInteractibleArea: {
+             id: 0,
+             position: "left-60 bottom-20 top-48",
+             gem: "none",
+           },
+         },
+         {
+           gemInteractibleArea: {
+             id: 1,
+             position: "bottom-20 right-60 top-48",
+             gem: "none",
+           },
+         },
+
+       ],
      },
    },
    {
@@ -59,6 +76,23 @@ export function NewMod({id}) {
              character: "none",
            },
          },
+       ],
+       gemInteractibleAreas: [
+           {
+               gemInteractibleArea: {
+                   id: 0,
+                   position: "left-60 bottom-20 top-48",
+                   gem: "none",
+               },
+           },
+           {
+               gemInteractibleArea: {
+                   id: 1,
+                   position: "bottom-20 right-60 top-48",
+                   gem: "none",
+               },
+           },
+
        ],
      },
    },
@@ -83,6 +117,24 @@ export function NewMod({id}) {
            },
          },
        ],
+       gemInteractibleAreas: [
+           {
+               gemInteractibleArea: {
+                   id: 0,
+                   position: "left-60 bottom-20 top-48",
+                   gem: "none",
+               },
+           },
+           {
+               gemInteractibleArea: {
+                   id: 1,
+                   position: "bottom-20 right-60 top-48",
+                   gem: "none",
+               },
+           },
+
+
+       ],
      },
    },
    {
@@ -105,6 +157,24 @@ export function NewMod({id}) {
              character: "none",
            },
          },
+       ],
+       gemInteractibleAreas: [
+           {
+               gemInteractibleArea: {
+                   id: 0,
+                   position: "left-60 bottom-20 top-48",
+                   gem: "none",
+               },
+           },
+           {
+               gemInteractibleArea: {
+                   id: 1,
+                   position: "bottom-20 right-60 top-48",
+                   gem: "none",
+               },
+           },
+
+
        ],
      },
    },
@@ -129,6 +199,7 @@ export function NewMod({id}) {
       name: entry.location.name,
       img: entry.location.img,
       interactibleAreas: entry.location.interactibleAreas,
+      gemInteractibleAreas: entry.location.gemInteractibleAreas,
     };
 
     return {
@@ -189,13 +260,20 @@ export function NewMod({id}) {
  };
 
 
-
+// ALLAGH GIA TA GEMS
  const isSaveButtonDisabled = () => {
    const hasCharacterWithoutTopic = mod.some((entry) =>
      entry.location.interactibleAreas.some(
        (ia) =>
          ia.interactibleArea.character !== 'none' &&
          !ia.interactibleArea.character.topic
+     )
+   );
+   const hasGemWithoutTopic = mod.some((entry) =>
+     entry.location.gemInteractibleAreas.some(
+       (ia) =>
+         ia.gemInteractibleArea.gem !== 'none' &&
+         !ia.gemInteractibleArea.gem.gemTopic
      )
    );
 
@@ -212,7 +290,13 @@ export function NewMod({id}) {
          (ia) => ia.interactibleArea.character === 'none'
        )
      ) ||
-     hasCharacterWithoutTopic
+     hasCharacterWithoutTopic ||
+     mod.every((entry) =>
+      entry.location.gemInteractibleAreas.every(
+        (ia) => ia.gemInteractibleArea.gem === 'none'
+      )
+    ) ||
+    hasGemWithoutTopic
    );
  };
 
@@ -242,7 +326,7 @@ export function NewMod({id}) {
       // Perform any necessary actions after successfully saving the mod
     } catch (error) {
       console.error('Error saving mod:', error);
-      setErrorMessage('An error occurred while saving the mod. Please try again.');
+      setErrorMessage('An error occurred while saving the mod. Please generade new code.');
     }
   };
 
@@ -304,6 +388,7 @@ export function NewMod({id}) {
              maxLength="4"
              value={info.code}
              onChange={(e) => setInfo({ ...info, code: e.target.value })}
+             readOnly
            />
            <button
              className="bg-blue-500 text-white px-3 py-2 ml-2 rounded"
@@ -326,14 +411,25 @@ export function NewMod({id}) {
      </div>
       {mod.map((entry, index) => (
     <div key={index} className="relative rounded-lg overflow-hidden mb-6">
+      {/*<Location
+        areaId={entry.location.id}
+        name={entry.location.name}
+        img={entry.location.img}
+        interactibleAreas={entry.location.interactibleAreas}
+
+        handleMod={handleMod}
+        mod = {mod}
+      /> */}
       <Location
         areaId={entry.location.id}
         name={entry.location.name}
         img={entry.location.img}
         interactibleAreas={entry.location.interactibleAreas}
+        gemInteractibleAreas={entry.location.gemInteractibleAreas}
         handleMod={handleMod}
         mod = {mod}
       />
+
     </div>
   ))}
     </div>

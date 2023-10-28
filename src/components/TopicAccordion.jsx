@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { Accordion, AccordionHeader, AccordionBody } from '@material-tailwind/react';
 import { topicsData } from '../utils/topics.js';
-
+// <p className="text-lg mb-3 font-semibold underline">Question: {topic.topic.question}</p>
+// {topic.topic.choices.map((choice) => (
+//   <p
+//     key={choice.choice.id}
+//     className={`mb-2 text-base ${choice.choice.answer ? "text-green-500" : ""}`}
+//   >
+//     {choice.choice.text}
+//   </p>
+// ))}
 export function TopicAccordion({mod, handleMod, handleTopicSelect}) {
   const [open, setOpen] = useState(1);
 
@@ -28,18 +36,11 @@ export function TopicAccordion({mod, handleMod, handleTopicSelect}) {
           </AccordionHeader>
          <AccordionBody>
            <div className="text-left">
-             <p className="text-base mb-2 font-medium">{topic.topic.desc}</p>
+             <p className="w-[30rem] text-base mb-2 font-medium">{topic.topic.desc}</p>
              <hr className="my-4" />
-             <p className="text-lg mb-3 font-semibold underline">Question: {topic.topic.question}</p>
-             {topic.topic.choices.map((choice) => (
-               <p
-                 key={choice.choice.id}
-                 className={`mb-2 text-base ${choice.choice.answer ? "text-green-500" : ""}`}
-               >
-                 {choice.choice.text}
-               </p>
 
-             ))}
+
+
              <button
                className="ml-auto bg-blue-500 text-white text-base px-2 py-1 rounded"
                onClick={() => {handleTopicSelect(topic.topic)}}>
