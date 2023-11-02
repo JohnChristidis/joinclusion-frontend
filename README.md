@@ -19,5 +19,15 @@ Before you begin, ensure you have the following installed on your development ma
    cd joinclusion-frontend
    npm install
    // change the src/utils/config.js to the backendUrl of your choice
+
+   --------> UPDATE <----------
+   In the root folder create a .env file
+   Inside add the following:
+   ENVIRONMENT=staging
+   LOCATION_KEY_FILE= your_key
+   LOCATION_CERTIFICATE_FILE= your_certificate
+   ---------> END OF UPDATE <----------
+
+   Then in the terminal
    npm run dev
    npm run build
