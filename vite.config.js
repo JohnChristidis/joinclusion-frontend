@@ -10,7 +10,7 @@ const commonConfig = {
 };
 
 const config =
-  process.env.ENVIRONMENT !== 'development'
+  process.env.VITE_ENVIRONMENT !== 'development'
     ? {
         ...commonConfig,
         server: {

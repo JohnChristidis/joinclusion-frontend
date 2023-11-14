@@ -28,6 +28,15 @@ Before you begin, ensure you have the following installed on your development ma
    LOCATION_CERTIFICATE_FILE= your_certificate
    ---------> END OF UPDATE <----------
 
+   --------> UPDATE 14/11 <----------
+   In the .env add the following
+   VITE_BACKENDURL=your_backend_url
+   Also change the following
+   ENVIRONMENT=staging
+   to
+   VITE_ENVIRONMENT=staging
+   ---------> END OF UPDATE <----------
+
    Then in the terminal
    npm run dev
    npm run build

@@ -1,11 +1,13 @@
+let config;
 
+if (import.meta.env.VITE_ENVIRONMENT === 'development') {
+  config = {
+    backendUrl: "http://localhost:3000",
+  };
+} else {
+  config = {
+    backendUrl: import.meta.env.VITE_BACKENDURL,
+  };
+}
 
-// const config = {
-//   backendUrl: "http://localhost:3000",
-// };
-
-const config = {
-  backendUrl: "https://joinclusion-test.fse.unimaas.nl:3000",
-};
-
-export {config};
+export { config };

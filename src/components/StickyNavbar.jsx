@@ -83,7 +83,7 @@ export function StickyNavbar({logedIn, handleLogedIn, hanldeId, id}) {
             <div className="mr-2 hidden lg:block">{navList}</div>
             <Button
               variant="gradient"
-              size="m"
+              size="md"
               className="hidden lg:inline-block"
               onClick = {handleLogout}
             >
